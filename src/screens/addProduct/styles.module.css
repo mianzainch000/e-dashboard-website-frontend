@@ -1,0 +1,20 @@
+.centeredContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error {
+  margin-top: 10px;
+  text-align: center;
+  color: var( --error-color);
+}
+
+.btn{
+  width: 90%;
+  margin-bottom: 10px;
+  text-transform: none;
+  color: var(--text-light);
+  background-color: var(--text-dark);
+}

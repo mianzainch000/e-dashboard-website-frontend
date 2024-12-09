@@ -1,0 +1,21 @@
+      .button {
+       margin-top: 10px;
+       font-size: 20px;
+       text-align: center;
+       text-transform: none;
+       text-decoration: none;
+       color: var(--text-dark);
+    }
+    
+    .drawer {
+      width: 90%;
+      height: 100%;
+      display: flex;
+      align-self: center;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .crossIcon{
+      color: var(--text-dark);
+    }

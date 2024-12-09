@@ -1,0 +1,12 @@
+.error {
+  margin-top: 10px;
+  color: var(--error-color);
+}
+.centeredContainer {
+  display: flex;
+  margin-top: 17px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}

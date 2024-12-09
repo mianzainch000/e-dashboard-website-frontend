@@ -1,0 +1,21 @@
+.btn {
+ 
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  margin: 20px 0px;
+  border-radius: 8px;
+  text-transform: none;
+  background-color: rgb(22, 66, 105);
+}
+
+.btn:hover {
+  color: white;
+  background-color: rgb(22, 66, 105);
+}
+
+.loading {
+  font-size: 10px;
+  margin-left: 10px;
+  color: var(--text-light);
+}

@@ -1,0 +1,22 @@
+/* Light Theme */
+:root {
+  --text-dark: #000000;
+  --text-light:#ffffff;
+  --error-color:#FF0000;
+ 
+  
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --text-dark: #ffffff;
+  --text-light:#000000;
+  --error-color:#FF0000;
+ 
+ 
+ }
+
+body {
+  color: var(--text-dark);
+  background-color: var(--text-light);
+}

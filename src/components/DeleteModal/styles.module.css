@@ -1,0 +1,100 @@
+.main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 16px;
+  background-color: var(--text-light); 
+  transform: translate(-50%, -50%);
+}
+
+.msg {
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-dark) !important; 
+}
+
+.buttonContainer {
+  display: flex;
+  height: 130px;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.btnText {
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: none;
+  padding-bottom: 10px;
+  color: var(--text-dark) !important; 
+}
+
+.crossIcon {
+  color: var(--text-dark) !important; 
+}
+.main::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 767px) {
+  .main {
+    /* Mobile width */
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .main {
+    /* Tablet*/
+    width: 60%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    /* Laptop  */
+    width: 35%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main {
+    /* Desktop  */
+    width: 35%;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.crossIcon {
+  margin: 10px;
+  display: flex;
+  cursor: pointer;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.msg {
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.buttonContainer {
+  display: flex;
+  height: 130px;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.btnText {
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: none;
+  padding-bottom: 10px;
+  color: var(--text-light);
+}
