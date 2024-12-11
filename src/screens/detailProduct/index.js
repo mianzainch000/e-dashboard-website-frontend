@@ -28,6 +28,7 @@ const ProductDetailCard = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [mainImage, setMainImage] = useState("");
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const getData = async () => {
     try {
@@ -88,7 +89,20 @@ const ProductDetailCard = () => {
     );
   }
 
+  const stockValue = product.stock[selectedImageIndex];
+
   const totalPrice = count * product.price;
+
+  const handleIncrement = () => {
+    if (count < stockValue) {
+      setCount(count + 1);
+    } else {
+      snackBarMessage({
+        type: "error",
+        message: t("Stock not available"),
+      });
+    }
+  };
 
   return (
     <Grid
@@ -142,7 +156,10 @@ const ProductDetailCard = () => {
           <Typography variant="h5">
             {t("DESCRIPTION")}:{product.description}
           </Typography>
-
+          <br />
+          <Typography variant="h5">
+            {t("STOCK")}:{stockValue}
+          </Typography>
           <Box
             display="flex"
             flexDirection={{ xs: "column", sm: "row" }}
@@ -160,18 +177,17 @@ const ProductDetailCard = () => {
                 -
               </Button>
               <Typography>{count}</Typography>
-              <Button
-                variant="outlined"
-                size="small"
-                onClick={() => setCount((prev) => prev + 1)}
-              >
+              <Button variant="outlined" size="small" onClick={handleIncrement}>
                 +
               </Button>
             </Box>
 
             <Typography
               variant="h5"
-              sx={{ mt: { xs: 2, sm: 0 }, textAlign: "center" }}
+              sx={{
+                mt: { xs: 2, sm: "-50px", md: "-50px", lg: "-100px" },
+                textAlign: "center",
+              }}
             >
               {t("TOTAL_PRICE")}: {totalPrice} Rs
             </Typography>

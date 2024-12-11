@@ -1,14 +1,16 @@
 import React from "react";
+import TextInput from "../TextInput";
 import { useTranslation } from "react-i18next";
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, IconButton, Typography, Input } from "@mui/material";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-
+import { Box, IconButton, Typography, Input, TextField } from "@mui/material";
 const UploadImageSection = ({
   imageFile,
   onImageChange,
   onRemove,
   isEditable,
+  stockText,
+  onStockTextChange,
 }) => {
   const { t } = useTranslation();
 
@@ -30,7 +32,6 @@ const UploadImageSection = ({
             width: 160,
             height: 160,
             borderRadius: "16px",
-            border: "2px dashed var(--text-dark)",
             overflow: "hidden",
             display: "flex",
             justifyContent: "center",
@@ -38,6 +39,7 @@ const UploadImageSection = ({
             backgroundColor: imageFile
               ? "transparent"
               : "var(--background-light)",
+            border: "2px dashed var(--text-dark)",
           }}
         >
           {imageFile && imageFile.url ? (
@@ -84,6 +86,14 @@ const UploadImageSection = ({
           <CloseIcon sx={{ fontSize: 20, color: "var(--text-light)" }} />
         </IconButton>
       )}
+      <br />
+      {/* Stock Text Field */}
+      <TextInput
+        label={t("STOCK")}
+        variant="outlined"
+        value={stockText}
+        onChange={(e) => onStockTextChange(e.target.value)}
+      />
     </Box>
   );
 };

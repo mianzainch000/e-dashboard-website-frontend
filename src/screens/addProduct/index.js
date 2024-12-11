@@ -19,12 +19,14 @@ const ProductForm = () => {
   const snackBarMessage = useSnackbar();
   const [loading, setLoading] = useState(false);
   const { productFormValidation } = useValidationSchemas(t);
+
   const formik = useFormik({
     initialValues: {
       name: "",
       price: "",
       description: "",
-      images: [],
+      stock: [], // Initialize stock field as an array
+      images: [], // Initialize images field
     },
     validationSchema: productFormValidation,
     onSubmit: async (values) => {
@@ -34,22 +36,12 @@ const ProductForm = () => {
       formData.append("price", values.price);
       formData.append("description", values.description);
 
-      // Image error display
+      // Append each stock value to FormData (as strings)
+      values.stock.forEach((stock) => {
+        formData.append("stock", stock);
+      });
 
-      // Check if the images array has files
-      if (!id) {
-        if (
-          values.images.length === 0 ||
-          !values.images.some((image) => image.file)
-        ) {
-          return snackBarMessage({
-            type: "error",
-            message: "Atleast one image upload",
-          });
-        }
-      }
-
-      // Append each image file to FormData
+      // Append each image to FormData
       values.images.forEach((image) => {
         if (image?.file) {
           formData.append("images", image.file);
@@ -60,7 +52,6 @@ const ProductForm = () => {
     },
   });
 
-  // Fetch product details if in edit mode
   const fetchProductDetails = async (productId) => {
     try {
       const res = await getProductById(productId);
@@ -70,9 +61,11 @@ const ProductForm = () => {
           name: productData.name,
           price: productData.price,
           description: productData.description,
-          images: productData.image?.map((img) => ({
-            url: `${config.baseURL}uploads/${img}`,
-          })),
+          stock: productData.stock || [],
+          images:
+            productData.image?.map((img) => ({
+              url: `${config.baseURL}uploads/${img}`,
+            })) || [],
         });
       } else {
         snackBarMessage({ type: "error", message: "Product not found" });
@@ -96,7 +89,6 @@ const ProductForm = () => {
       const res = id
         ? await updateProduct(id, formData)
         : await postProduct(formData);
-
       if (res?.status === 201) {
         snackBarMessage({ type: "success", message: res?.data?.message });
         formik.resetForm({ values: { ...formik.initialValues, images: [] } });
@@ -114,19 +106,28 @@ const ProductForm = () => {
 
   const handleAddImage = () => {
     formik.setFieldValue("images", [...formik.values.images, null]);
+    formik.setFieldValue("stock", [...formik.values.stock, ""]); // Add stock value for new image
   };
 
   const handleRemoveImage = (index) => {
     const updatedImages = formik.values.images.filter(
       (_, idx) => idx !== index
     );
+    const updatedStock = formik.values.stock.filter((_, idx) => idx !== index);
     formik.setFieldValue("images", updatedImages);
+    formik.setFieldValue("stock", updatedStock); // Remove the corresponding stock
   };
 
   const handleImageChange = (file, index) => {
     const updatedImages = [...formik.values.images];
     updatedImages[index] = { url: URL.createObjectURL(file), file };
     formik.setFieldValue("images", updatedImages);
+  };
+
+  const handleStockTextChange = (newStockValue, index) => {
+    const updatedStock = [...formik.values.stock];
+    updatedStock[index] = String(newStockValue); // Ensure it's a string for each image
+    formik.setFieldValue("stock", updatedStock);
   };
 
   return (
@@ -155,6 +156,7 @@ const ProductForm = () => {
           {id ? t("UPDATE_PRODUCT") : t("ADD_PRODUCT")}
         </Typography>
 
+        {/* Product Name */}
         <Box className={styles.centeredContainer}>
           <TextInput
             fullWidth
@@ -166,15 +168,14 @@ const ProductForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.touched.name && formik.errors.name ? (
+          {formik.touched.name && formik.errors.name && (
             <Typography className={styles.error}>
               {formik.errors.name}
             </Typography>
-          ) : (
-            ""
           )}
         </Box>
 
+        {/* Product Price */}
         <Box className={styles.centeredContainer}>
           <TextInput
             fullWidth
@@ -187,15 +188,14 @@ const ProductForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.touched.price && formik.errors.price ? (
+          {formik.touched.price && formik.errors.price && (
             <Typography className={styles.error}>
               {formik.errors.price}
             </Typography>
-          ) : (
-            ""
           )}
         </Box>
 
+        {/* Product Description */}
         <Box className={styles.centeredContainer}>
           <TextInput
             fullWidth
@@ -209,15 +209,14 @@ const ProductForm = () => {
             multiline
             rows={4}
           />
-          {formik.touched.description && formik.errors.description ? (
+          {formik.touched.description && formik.errors.description && (
             <Typography className={styles.error}>
               {formik.errors.description}
             </Typography>
-          ) : (
-            ""
           )}
         </Box>
 
+        {/* Image Upload Section */}
         <Box
           sx={{
             display: "flex",
@@ -232,11 +231,15 @@ const ProductForm = () => {
               imageFile={image}
               onImageChange={(file) => handleImageChange(file, index)}
               onRemove={() => handleRemoveImage(index)}
-              isEditable={!id} // Only allow remove if id is not present (adding product)
+              isEditable={!id}
+              stockText={formik.values.stock[index] || ""} // Stock for each image
+              onStockTextChange={(newStockValue) =>
+                handleStockTextChange(newStockValue, index)
+              }
             />
           ))}
 
-          {!id && ( // Only show the button in add mode
+          {!id && (
             <Button
               variant="contained"
               onClick={handleAddImage}
@@ -249,6 +252,8 @@ const ProductForm = () => {
             </Button>
           )}
         </Box>
+
+        {/* Submit Button */}
         <Box className={styles.centeredContainer}>
           <CustomButton
             title={id ? t("UPDATE_PRODUCT") : t("ADD_PRODUCT")}
