@@ -90,11 +90,11 @@ const ThemeToggle = () => {
         <Button onClick={toggleTheme}>
           {themeMode === "light" ? (
             <>
-              <WbSunnyRoundedIcon sx={{ color: "white" }} />
+              <NightlightRoundRoundedIcon sx={{ color: "white" }} />
             </>
           ) : (
             <>
-              <NightlightRoundRoundedIcon sx={{ color: "white" }} />
+              <WbSunnyRoundedIcon sx={{ color: "white" }} />
             </>
           )}
         </Button>

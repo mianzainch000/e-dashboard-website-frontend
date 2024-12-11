@@ -30,7 +30,7 @@ const UploadImageSection = ({
             width: 160,
             height: 160,
             borderRadius: "16px",
-            border: imageFile ? "none" : "2px dashed var(--text-dark)",
+            border: "2px dashed var(--text-dark)",
             overflow: "hidden",
             display: "flex",
             justifyContent: "center",
