@@ -26,7 +26,7 @@ const DrawerComp = () => {
     try {
       Cookies.remove("token");
       snackBarMessage({
-        message: "Logout Successfully",
+        message: t("LOGOUT_SUCCESSFULLY"),
         type: "success",
       });
       navigate("/");

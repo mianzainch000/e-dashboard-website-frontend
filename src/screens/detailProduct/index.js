@@ -1,9 +1,9 @@
 import config from "../../api/config";
-import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/slice";
 import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
 import { getProductById } from "../../api/endPoint";
+import { useDispatch, useSelector } from "react-redux";
 import { useSnackbar } from "../../components/Snackbar";
 import { useParams, useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -42,10 +42,10 @@ const ProductDetailCard = () => {
             : "/default-image.jpg"
         );
       } else {
-        snackBarMessage({ type: "error", message: "Fetch Error" });
+        snackBarMessage({ type: "error", message: t("FETCH_ERROR") });
       }
     } catch (error) {
-      snackBarMessage({ type: "error", message: "Fetch Error" });
+      snackBarMessage({ type: "error", message: t("FETCH_ERROR") });
     } finally {
       setLoading(false);
     }
@@ -102,7 +102,7 @@ const ProductDetailCard = () => {
     } else {
       snackBarMessage({
         type: "error",
-        message: t("Stock not available"),
+        message: t("STOCK_NOT_AVAILABLE"),
       });
     }
   };
@@ -124,13 +124,13 @@ const ProductDetailCard = () => {
       );
       snackBarMessage({
         type: "success",
-        message: "Product add successfully",
+        message: t("PRODUCT_ADDED_SUCCESSFULLY"),
       });
       setCount(0);
     } else {
       snackBarMessage({
         type: "error",
-        message: t("Stoc are not available"),
+        message: t("STOCK_NOT_AVAILABLE"),
       });
     }
   };

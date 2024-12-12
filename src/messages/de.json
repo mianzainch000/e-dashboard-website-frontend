@@ -65,5 +65,16 @@
   "MANAGE_ADDRESS": "Adresse verwalten",
   "SAVE_ADDRESS": "Adresse speichern",
   "ADDRESS": "Adresse",
-  "STOCK": "Lager"
+  "STOCK": "Lager",
+  "LOGIN_SUCCESSFULLY": "Erfolgreich eingeloggt",
+  "INVALID_EMAIL_OR_PASSWORD": "Ungültige E-Mail oder Passwort",
+  "ACCOUNT_CREATED_SUCCESSFULLY": "Konto erfolgreich erstellt",
+  "EMAIL_ALREADY_IN_USE": "E-Mail wird bereits verwendet",
+  "LOGOUT_SUCCESSFULLY": "Erfolgreich ausgeloggt",
+  "PRODUCT_ADDED_SUCCESSFULLY": "Produkt erfolgreich hinzugefügt",
+  "PRODUCT_UPDATED_SUCCESSFULLY": "Produkt erfolgreich aktualisiert",
+  "PRODUCT_DELETED_SUCCESSFULLY": "Produkt erfolgreich gelöscht",
+  "FETCH_ERROR": "Abruffehler",
+  "STOCK_NOT_AVAILABLE": "Lagerbestand nicht verfügbar",
+  "ADDRESS_ADDED_SUCCESSFULLY": "Adresse erfolgreich hinzugefügt"
 }

@@ -28,7 +28,6 @@ const Home = () => {
   const getData = async () => {
     try {
       const res = await getProducts();
-      console.log("res", res);
       if (res.status === 201) {
         setData(res?.data);
       }
@@ -55,7 +54,7 @@ const Home = () => {
         );
         snackBarMessage({
           type: "success",
-          message: "Product deleted successfully",
+          message: t("PRODUCT_DELETED_SUCCESSFULLY"),
         });
         setModalOpen(false);
       } else {
@@ -67,7 +66,7 @@ const Home = () => {
     } catch (error) {
       snackBarMessage({
         type: "error",
-        message: error.message || "An error occurred",
+        message: error.message,
       });
     }
   };

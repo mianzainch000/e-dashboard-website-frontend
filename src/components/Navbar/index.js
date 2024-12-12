@@ -25,19 +25,19 @@ import {
 const Navbar = () => {
   const theme = useTheme();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const snackBarMessage = useSnackbar();
   const [loading, setLoading] = useState(false);
+  const isAuthenticated = !!Cookies.get("token");
   const [modalOpen, setModalOpen] = useState(false);
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const isAuthenticated = !!Cookies.get("token"); // Check if token exists
 
   const handleLogout = async () => {
     setLoading(true);
     try {
       Cookies.remove("token");
       snackBarMessage({
-        message: "Logout Successfully",
+        message: t("LOGOUT_SUCCESSFULLY"),
         type: "success",
       });
       navigate("/");

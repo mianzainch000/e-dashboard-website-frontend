@@ -60,14 +60,15 @@ const Login = () => {
       };
       const res = await login(data);
       if (res?.status === 201) {
-        Cookies.set("token", res?.data?.token, { expires: 1 / 24 });
+        Cookies.set("token", res?.data?.token, { expires: 2 / 24 });
         Cookies.set("firstName", res?.data?.user?.firstName, {
-          expires: 1 / 24,
+          expires: 2 / 24,
         });
-        Cookies.set("lastName", res?.data?.user?.lastName, { expires: 1 / 24 });
+        Cookies.set("lastName", res?.data?.user?.lastName, { expires: 2 / 24 });
         snackBarMessage({
           type: "success",
-          message: res?.data?.message,
+          // message: res?.data?.message,
+          message: t("LOGIN_SUCCESSFULLY"),
         });
         formik.handleReset();
 
@@ -75,7 +76,8 @@ const Login = () => {
       } else {
         snackBarMessage({
           type: "error",
-          message: res?.data?.message,
+          // message: res?.data?.message,
+          message: t("INVALID_EMAIL_OR_PASSWORD"),
         });
       }
     } catch (error) {

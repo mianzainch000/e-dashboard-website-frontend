@@ -72,13 +72,15 @@ const Signup = () => {
       if (res?.status === 201) {
         snackBarMessage({
           type: "success",
-          message: res?.data?.message,
+          // message: res?.data?.message,
+          message: t("ACCOUNT_CREATED_SUCCESSFULLY"),
         });
         formik.handleReset();
       } else {
         snackBarMessage({
           type: "error",
-          message: res?.data?.message,
+          // message: res?.data?.message,
+          message: t("EMAIL_ALREADY_IN_USE"),
         });
       }
     } catch (error) {

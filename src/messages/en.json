@@ -65,5 +65,16 @@
   "MANAGE_ADDRESS": " Manage Address",
   "SAVE_ADDRESS": "Save Address",
   "ADDRESS": "Address",
-  "STOCK":"Stock"
+  "STOCK": "Stock",
+  "LOGIN_SUCCESSFULLY": "Login Successfully",
+  "INVALID_EMAIL_OR_PASSWORD": "Invalid email or password",
+  "ACCOUNT_CREATED_SUCCESSFULLY": "Account created successfully",
+  "EMAIL_ALREADY_IN_USE": "Email already in use",
+  "LOGOUT_SUCCESSFULLY": "Logout Successfully",
+  "PRODUCT_ADDED_SUCCESSFULLY": "Product added successfully",
+  "PRODUCT_UPDATED_SUCCESSFULLY": "Product updated successfully",
+  "PRODUCT_DELETED_SUCCESSFULLY": "Product deleted successfully",
+  "FETCH_ERROR": "Fetch Error",
+  "STOCK_NOT_AVAILABLE": "Stock not available",
+  "ADDRESS_ADDED_SUCCESSFULLY": "Address added successfully"
 }

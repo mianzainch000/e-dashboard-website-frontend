@@ -41,7 +41,8 @@ const AddressPage = () => {
       if (res?.status === 201) {
         snackBarMessage({
           type: "success",
-          message: res?.data?.message,
+          // message: res?.data?.message,
+          message: t("ADDRESS_ADDED_SUCCESSFULLY"),
         });
         formik.handleReset();
       } else {

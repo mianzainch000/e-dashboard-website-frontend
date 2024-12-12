@@ -25,8 +25,8 @@ const ProductForm = () => {
       name: "",
       price: "",
       description: "",
-      stock: [], // Initialize stock field as an array
-      images: [], // Initialize images field
+      stock: [],
+      images: [],
     },
     validationSchema: productFormValidation,
     onSubmit: async (values) => {
@@ -68,12 +68,12 @@ const ProductForm = () => {
             })) || [],
         });
       } else {
-        snackBarMessage({ type: "error", message: "Product not found" });
+        snackBarMessage({ type: "error", message: t("NO_PRODUCT_FOUND") });
       }
     } catch (error) {
       snackBarMessage({
         type: "error",
-        message: "Error fetching product details",
+        message: t("FETCH_ERROR"),
       });
     }
   };
@@ -90,10 +90,18 @@ const ProductForm = () => {
         ? await updateProduct(id, formData)
         : await postProduct(formData);
       if (res?.status === 201) {
-        snackBarMessage({ type: "success", message: res?.data?.message });
+        // snackBarMessage({ type: "success", message: res?.data?.message });
+        snackBarMessage({
+          type: "success",
+          message: t("PRODUCT_ADDED_SUCCESSFULLY"),
+        });
         formik.resetForm({ values: { ...formik.initialValues, images: [] } });
       } else {
-        snackBarMessage({ type: "success", message: res?.data?.message });
+        // snackBarMessage({ type: "success", message: res?.data?.message });
+        snackBarMessage({
+          type: "success",
+          message: t("PRODUCT_UPDATED_SUCCESSFULLY"),
+        });
         formik.resetForm({ values: { ...formik.initialValues, images: [] } });
         navigate("/addProduct");
       }
