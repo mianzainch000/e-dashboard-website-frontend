@@ -1,5 +1,5 @@
 import config from "../../api/config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/slice";
 import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
@@ -29,6 +29,7 @@ const ProductDetailCard = () => {
   const [loading, setLoading] = useState(true);
   const [mainImage, setMainImage] = useState("");
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const { cart } = useSelector((state) => state.allCart);
 
   const getData = async () => {
     try {
@@ -41,13 +42,10 @@ const ProductDetailCard = () => {
             : "/default-image.jpg"
         );
       } else {
-        snackBarMessage({ type: "error", message: t("FETCH_ERROR") });
+        snackBarMessage({ type: "error", message: "Fetch Error" });
       }
     } catch (error) {
-      snackBarMessage({
-        type: "error",
-        message: t("FETCH_ERROR"),
-      });
+      snackBarMessage({ type: "error", message: "Fetch Error" });
     } finally {
       setLoading(false);
     }
@@ -94,12 +92,45 @@ const ProductDetailCard = () => {
   const totalPrice = count * product.price;
 
   const handleIncrement = () => {
-    if (count < stockValue) {
+    const cartItem = cart.find(
+      (item) => item.id === id && item.image === mainImage
+    );
+    const totalUsedStock = cartItem?.quantity || 0;
+
+    if (count + totalUsedStock < stockValue) {
       setCount(count + 1);
     } else {
       snackBarMessage({
         type: "error",
         message: t("Stock not available"),
+      });
+    }
+  };
+
+  const handleAddToCart = () => {
+    const cartItem = cart.find(
+      (item) => item.id === id && item.image === mainImage
+    );
+    const totalUsedStock = cartItem?.quantity || 0;
+
+    if (count + totalUsedStock <= stockValue) {
+      dispatch(
+        addToCart({
+          ...product,
+          quantity: count,
+          image: mainImage,
+          id,
+        })
+      );
+      snackBarMessage({
+        type: "success",
+        message: "Product add successfully",
+      });
+      setCount(0);
+    } else {
+      snackBarMessage({
+        type: "error",
+        message: t("Stoc are not available"),
       });
     }
   };
@@ -178,7 +209,7 @@ const ProductDetailCard = () => {
               <Button
                 variant="outlined"
                 size="small"
-                onClick={() => setCount((prev) => Math.max(prev - 1, 1))}
+                onClick={() => setCount((prev) => Math.max(prev - 1, 0))}
               >
                 -
               </Button>
@@ -258,20 +289,7 @@ const ProductDetailCard = () => {
               textTransform: "none",
               width: { xs: "100%", sm: "50%" },
             }}
-            onClick={() => {
-              dispatch(
-                addToCart({
-                  ...product,
-                  quantity: count,
-                  image: mainImage,
-                  id,
-                })
-              );
-              snackBarMessage({
-                type: "success",
-                message: "Product added to cart successfully!",
-              });
-            }}
+            onClick={handleAddToCart}
             startIcon={<AddShoppingCartIcon />}
           >
             {t("ADD_TO_CART")}
@@ -281,4 +299,5 @@ const ProductDetailCard = () => {
     </Grid>
   );
 };
+
 export default ProductDetailCard;
