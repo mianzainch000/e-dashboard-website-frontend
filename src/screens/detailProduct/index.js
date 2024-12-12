@@ -24,7 +24,7 @@ const ProductDetailCard = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const snackBarMessage = useSnackbar();
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [mainImage, setMainImage] = useState("");
@@ -104,6 +104,12 @@ const ProductDetailCard = () => {
     }
   };
 
+  const handleImageSelect = (img, index) => {
+    setMainImage(`${config.baseURL}uploads/${img}`);
+    setSelectedImageIndex(index);
+    setCount(0);
+  };
+
   return (
     <Grid
       container
@@ -154,11 +160,11 @@ const ProductDetailCard = () => {
           </Typography>
           <br />
           <Typography variant="h5">
-            {t("DESCRIPTION")}:{product.description}
+            {t("DESCRIPTION")}: {product.description}
           </Typography>
           <br />
           <Typography variant="h5">
-            {t("STOCK")}:{stockValue}
+            {t("STOCK")}: {stockValue}
           </Typography>
           <Box
             display="flex"
@@ -237,7 +243,7 @@ const ProductDetailCard = () => {
                     border: "2px solid var(--primary-color)",
                   },
                 }}
-                onClick={() => setMainImage(`${config.baseURL}uploads/${img}`)}
+                onClick={() => handleImageSelect(img, index)}
               />
             ))}
           </Box>
@@ -275,5 +281,4 @@ const ProductDetailCard = () => {
     </Grid>
   );
 };
-
 export default ProductDetailCard;
