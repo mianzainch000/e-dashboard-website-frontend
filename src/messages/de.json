@@ -64,5 +64,6 @@
   "POSTAL_CODE_INVALID": "Postleitzahl muss 5 Ziffern haben",
   "MANAGE_ADDRESS": "Adresse verwalten",
   "SAVE_ADDRESS": "Adresse speichern",
-  "ADDRESS": "Adresse"
+  "ADDRESS": "Adresse",
+  "STOCK": "Lager"
 }

@@ -64,5 +64,6 @@
   "POSTAL_CODE_INVALID": "Postal code must be 5 digits",
   "MANAGE_ADDRESS": " Manage Address",
   "SAVE_ADDRESS": "Save Address",
-  "ADDRESS": "Address"
+  "ADDRESS": "Address",
+  "STOCK":"Stock"
 }
