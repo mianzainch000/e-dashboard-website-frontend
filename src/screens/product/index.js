@@ -72,7 +72,7 @@ const Home = () => {
   };
   useEffect(() => {
     getData();
-  }, [data]);
+  }, []);
 
   // Handle drag end
   const handleDragEnd = (result) => {
@@ -126,7 +126,7 @@ const Home = () => {
                           sx={{
                             m: 2,
                             display: "flex",
-                            maxWidth: "300px",
+                            width: "300px",
                             flexDirection: "column",
                             color: "var(--text-dark)",
                             border: "1px solid white",
