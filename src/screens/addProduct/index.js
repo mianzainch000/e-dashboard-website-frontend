@@ -261,6 +261,17 @@ const ProductForm = () => {
           )}
         </Box>
 
+        {formik.errors.images && formik.touched.images ? (
+          <Typography className={styles.error}>
+            {formik.errors.images}
+          </Typography>
+        ) : null}
+        {formik.errors.stock && formik.touched.stock ? (
+          <Typography className={styles.error}>
+            {formik.errors.stock}
+          </Typography>
+        ) : null}
+
         {/* Submit Button */}
         <Box className={styles.centeredContainer}>
           <CustomButton

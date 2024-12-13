@@ -76,5 +76,7 @@
   "PRODUCT_DELETED_SUCCESSFULLY": "Produkt erfolgreich gelöscht",
   "FETCH_ERROR": "Abruffehler",
   "STOCK_NOT_AVAILABLE": "Lagerbestand nicht verfügbar",
-  "ADDRESS_ADDED_SUCCESSFULLY": "Adresse erfolgreich hinzugefügt"
+  "ADDRESS_ADDED_SUCCESSFULLY": "Adresse erfolgreich hinzugefügt",
+  "AT_LEAST_ONE_IMAGE_REQUIRED": "Mindestens ein Bild erforderlich",
+  "STOCK_REQUIRED": "Lagerbestand erforderlich"
 }

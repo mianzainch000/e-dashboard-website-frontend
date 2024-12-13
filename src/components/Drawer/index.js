@@ -65,7 +65,7 @@ const DrawerComp = () => {
       >
         <Grid container sx={{ padding: "30px 5px" }}>
           <Grid md={10} xs={10}>
-            <img src={logo} width={60} />
+            <img src={logo} width={60} alt="Logo" />
           </Grid>
 
           <Grid md={1} xs={1}>
@@ -88,15 +88,15 @@ const DrawerComp = () => {
           >
             <Button
               className={styles.button}
-              onClick={() => handleNavigation("/home")}
-            >
-              {t("PRODUCT")}
-            </Button>
-            <Button
-              className={styles.button}
               onClick={() => handleNavigation("/addProduct")}
             >
               {t("ADD_PRODUCT")}
+            </Button>
+            <Button
+              className={styles.button}
+              onClick={() => handleNavigation("/home")}
+            >
+              {t("PRODUCT")}
             </Button>
             <Button
               className={styles.button}

@@ -36,6 +36,15 @@ export const productFormValidation = (t) => {
       .required(t("PRICE_REQUIRED"))
       .positive(t("PRICE_POSITIVE")),
     description: Yup.string().required(t("DESCRIPTION_REQUIRED")),
+    images: Yup.array()
+      .of(
+        Yup.object().shape({
+          url: Yup.string().required(t("IMAGE_REQUIRED")),
+          file: Yup.mixed(),
+        })
+      )
+      .min(1, t("AT_LEAST_ONE_IMAGE_REQUIRED")),
+    stock: Yup.array().of(Yup.string().required(t("STOCK_REQUIRED"))),
   });
 };
 

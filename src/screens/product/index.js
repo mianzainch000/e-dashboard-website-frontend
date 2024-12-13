@@ -72,7 +72,7 @@ const Home = () => {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [data]);
 
   // Handle drag end
   const handleDragEnd = (result) => {

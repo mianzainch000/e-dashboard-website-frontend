@@ -27,7 +27,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const snackBarMessage = useSnackbar();
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const isAuthenticated = !!Cookies.get("token");
   const [modalOpen, setModalOpen] = useState(false);
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -102,13 +102,13 @@ const Navbar = () => {
                 {isAuthenticated && (
                   <>
                     <Button className={styles.button}>
-                      <NavLink to="/home" className={styles.button}>
-                        {t("PRODUCT")}
+                      <NavLink to="/addProduct" className={styles.button}>
+                        {t("ADD_PRODUCT")}
                       </NavLink>
                     </Button>
                     <Button className={styles.button}>
-                      <NavLink to="/addProduct" className={styles.button}>
-                        {t("ADD_PRODUCT")}
+                      <NavLink to="/home" className={styles.button}>
+                        {t("PRODUCT")}
                       </NavLink>
                     </Button>
                     <Button className={styles.button}>
