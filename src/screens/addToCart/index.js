@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { removeFromCart } from "../../redux/slice";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,16 +15,9 @@ import {
 
 const CartPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { cart } = useSelector((state) => state.allCart);
 
-  const handleContinueShopping = () => {
-    navigate("/home");
-  };
-  const handleAddAdress = () => {
-    navigate("/address");
-  };
   const handleDelete = (productId, productImage) => {
     dispatch(removeFromCart({ id: productId, image: productImage }));
   };
@@ -132,24 +125,26 @@ const CartPage = () => {
           <Typography variant="h6" sx={{ marginBottom: 2 }}>
             {t("TOTAL_CART_PRICE")}: {totalCartPrice} Rs
           </Typography>
-          <Button
-            color="success"
-            variant="contained"
-            sx={{ textTransform: "none" }}
-            onClick={handleContinueShopping}
-          >
-            {t("CONTINUE_SHOPPING")}
-          </Button>
+          <NavLink to="/home">
+            <Button
+              color="success"
+              variant="contained"
+              sx={{ width: "20%", textTransform: "none" }}
+            >
+              {t("CONTINUE_SHOPPING")}
+            </Button>
+          </NavLink>
           <br />
           <br />
-          <Button
-            color="success"
-            variant="contained"
-            sx={{ textTransform: "none" }}
-            onClick={handleAddAdress}
-          >
-            {t("ADDRESS")}
-          </Button>
+          <NavLink to="/address">
+            <Button
+              color="success"
+              variant="contained"
+              sx={{ width: "20%", textTransform: "none" }}
+            >
+              {t("ADDRESS")}
+            </Button>
+          </NavLink>
         </Grid>
       )}
     </Grid>
