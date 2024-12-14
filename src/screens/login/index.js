@@ -60,11 +60,8 @@ const Login = () => {
       };
       const res = await login(data);
       if (res?.status === 201) {
-        Cookies.set("token", res?.data?.token, { expires: 2 / 24 });
-        Cookies.set("firstName", res?.data?.user?.firstName, {
-          expires: 2 / 24,
-        });
-        Cookies.set("lastName", res?.data?.user?.lastName, { expires: 2 / 24 });
+        Cookies.set("token", res?.data?.token, { expires: 2 });
+
         snackBarMessage({
           type: "success",
           // message: res?.data?.message,

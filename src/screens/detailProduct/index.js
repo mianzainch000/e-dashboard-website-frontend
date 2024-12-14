@@ -87,17 +87,16 @@ const ProductDetailCard = () => {
     );
   }
 
-  const stockValue = product.stock[selectedImageIndex];
+  const stockValue =
+    product.stock[selectedImageIndex] -
+    (cart
+      .filter((item) => item.id === id && item.image === mainImage)
+      .reduce((acc, item) => acc + item.quantity, 0) || 0);
 
   const totalPrice = count * product.price;
 
   const handleIncrement = () => {
-    const cartItem = cart.find(
-      (item) => item.id === id && item.image === mainImage
-    );
-    const totalUsedStock = cartItem?.quantity || 0;
-
-    if (count + totalUsedStock < stockValue) {
+    if (count < stockValue) {
       setCount(count + 1);
     } else {
       snackBarMessage({
@@ -108,12 +107,7 @@ const ProductDetailCard = () => {
   };
 
   const handleAddToCart = () => {
-    const cartItem = cart.find(
-      (item) => item.id === id && item.image === mainImage
-    );
-    const totalUsedStock = cartItem?.quantity || 0;
-
-    if (count + totalUsedStock <= stockValue) {
+    if (count <= stockValue) {
       dispatch(
         addToCart({
           ...product,
