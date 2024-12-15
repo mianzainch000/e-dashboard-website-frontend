@@ -90,18 +90,18 @@ const ProductForm = () => {
         ? await updateProduct(id, formData)
         : await postProduct(formData);
       if (res?.status === 201) {
-        // snackBarMessage({ type: "success", message: res?.data?.message });
-        snackBarMessage({
-          type: "success",
-          message: t("PRODUCT_ADDED_SUCCESSFULLY"),
-        });
+        snackBarMessage({ type: "success", message: res?.data?.message });
+        // snackBarMessage({
+        //   type: "success",
+        //   message: t("PRODUCT_ADDED_SUCCESSFULLY"),
+        // });
         formik.resetForm({ values: { ...formik.initialValues, images: [] } });
       } else {
-        // snackBarMessage({ type: "success", message: res?.data?.message });
-        snackBarMessage({
-          type: "success",
-          message: t("PRODUCT_UPDATED_SUCCESSFULLY"),
-        });
+        snackBarMessage({ type: "success", message: res?.data?.message });
+        // snackBarMessage({
+        //   type: "success",
+        //   message: t("PRODUCT_UPDATED_SUCCESSFULLY"),
+        // });
         formik.resetForm({ values: { ...formik.initialValues, images: [] } });
         navigate("/addProduct");
       }

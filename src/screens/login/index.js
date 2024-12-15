@@ -64,8 +64,8 @@ const Login = () => {
 
         snackBarMessage({
           type: "success",
-          // message: res?.data?.message,
-          message: t("LOGIN_SUCCESSFULLY"),
+          message: res?.data?.message,
+          // message: t("LOGIN_SUCCESSFULLY"),
         });
         formik.handleReset();
 
@@ -73,8 +73,8 @@ const Login = () => {
       } else {
         snackBarMessage({
           type: "error",
-          // message: res?.data?.message,
-          message: t("INVALID_EMAIL_OR_PASSWORD"),
+          message: res?.data?.message,
+          // message: t("INVALID_EMAIL_OR_PASSWORD"),
         });
       }
     } catch (error) {
