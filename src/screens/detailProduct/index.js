@@ -1,4 +1,5 @@
 import config from "../../api/config";
+import logo from "../../Images/logo.png";
 import { addToCart } from "../../redux/slice";
 import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
@@ -39,7 +40,7 @@ const ProductDetailCard = () => {
         setMainImage(
           res.data?.image?.length > 0
             ? `${config.baseURL}uploads/${res.data.image[0]}`
-            : "/default-image.jpg"
+            : logo
         );
       } else {
         snackBarMessage({ type: "error", message: t("FETCH_ERROR") });
@@ -163,6 +164,9 @@ const ProductDetailCard = () => {
           component="img"
           src={mainImage}
           alt={product.name || "Product Image"}
+          onError={(e) => {
+            e.target.src = logo; // Set default logo image on error
+          }}
           sx={{
             width: { xs: "100%", sm: "30%" },
             height: { xs: 200, sm: 300 },
@@ -258,6 +262,9 @@ const ProductDetailCard = () => {
                 component="img"
                 src={`${config.baseURL}uploads/${img}`}
                 alt={`Product Image ${index + 1}`}
+                onError={(e) => {
+                  e.target.src = logo;
+                }}
                 sx={{
                   width: 60,
                   height: 60,

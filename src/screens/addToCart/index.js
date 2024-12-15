@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../../Images/logo.png";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { removeFromCart } from "../../redux/slice";
@@ -69,6 +70,9 @@ const CartPage = () => {
                   }}
                   src={cartItem.image}
                   alt={cartItem.name || "Product Image"}
+                  onError={(e) => {
+                    e.target.src = logo; // Set default logo image on error
+                  }}
                 />
                 <CardContent sx={{ paddingTop: 2 }}>
                   <Typography variant="h6" gutterBottom textAlign="center">

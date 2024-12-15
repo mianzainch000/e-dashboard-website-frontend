@@ -15,6 +15,7 @@ import {
   CardMedia,
   CircularProgress,
 } from "@mui/material";
+import logo from "../../Images/logo.png"; // Import the fallback image
 
 const Home = () => {
   const { t } = useTranslation();
@@ -39,6 +40,7 @@ const Home = () => {
       setLoading(false);
     }
   };
+
   const handleDeleteClick = (id) => {
     setSelectedProductId(id);
     setModalOpen(true);
@@ -69,6 +71,7 @@ const Home = () => {
       });
     }
   };
+
   useEffect(() => {
     getData();
   }, []);
@@ -138,10 +141,13 @@ const Home = () => {
                           key={product._id}
                         >
                           <CardMedia
-                            component={"img"}
+                            component="img"
                             src={`${config.baseURL}uploads/${product.image[0]}`}
                             alt={product.name}
                             sx={{ height: 300 }}
+                            onError={(e) => {
+                              e.target.src = logo; // Set default logo image on error
+                            }}
                           />
                           <CardContent>
                             <Typography variant="h4" textAlign="center">
