@@ -11,6 +11,6 @@
   color: var(--error-color);
 }
 
-.alreadyAccount {
+.goBackToLogin {
   margin: -20px 40px 20px 40px;
 }

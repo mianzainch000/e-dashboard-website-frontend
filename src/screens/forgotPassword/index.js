@@ -4,6 +4,7 @@ import YupPassword from "yup-password";
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import logo from "../../Images/logo.png";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import TextInput from "../../components/TextInput";
@@ -29,7 +30,6 @@ const ForgotPassword = () => {
   const snackBarMessage = useSnackbar();
   const [loading, setLoading] = useState(false);
   const { forgotFormValidation } = useValidationSchemas(t);
-
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const formik = useFormik({
@@ -98,9 +98,9 @@ const ForgotPassword = () => {
         <Box
           sx={{
             height: {
-              lg: "100vh",
-              md: "100vh",
-              sm: "100vh",
+              lg: "85vh",
+              md: "80vh",
+              sm: "80vh",
               xs: "100vh",
             },
           }}
@@ -171,6 +171,13 @@ const ForgotPassword = () => {
                   loading={loading}
                   type="submit"
                 />
+              </Grid>
+              <Grid item>
+                <NavLink to="/" variant="body2">
+                  <Typography className={styles.goBackToLogin}>
+                    {t("GO_BACK_TO_LOGIN")}
+                  </Typography>
+                </NavLink>
               </Grid>
             </Grid>
           </Box>

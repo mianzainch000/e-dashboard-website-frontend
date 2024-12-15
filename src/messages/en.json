@@ -79,6 +79,8 @@
   "ADDRESS_ADDED_SUCCESSFULLY": "Address added successfully",
   "AT_LEAST_ONE_IMAGE_REQUIRED": "At least one image required",
   "STOCK_REQUIRED": "Stock required",
-  "FORGOT_PASSWORD":"Forgot Password",
-  "VERIFY":"Verify"
+  "FORGOT_PASSWORD": "Forgot Password",
+  "VERIFY": "Verify",
+  "RESET_PASSWORD": "Reset Password",
+  "GO_BACK_TO_LOGIN": "Go back to login"
 }

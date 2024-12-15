@@ -80,5 +80,7 @@
   "AT_LEAST_ONE_IMAGE_REQUIRED": "Mindestens ein Bild erforderlich",
   "STOCK_REQUIRED": "Lagerbestand erforderlich",
   "FORGOT_PASSWORD": "Passwort vergessen",
-  "VERIFY": "Überprüfen"
+  "VERIFY": "Überprüfen",
+  "RESET_PASSWORD": "Passwort zurücksetzen",
+  "GO_BACK_TO_LOGIN": "Zurück zum Login"
 }

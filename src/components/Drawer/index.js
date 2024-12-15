@@ -6,17 +6,18 @@ import DeleteModal from "../DeleteModal";
 import styles from "./styles.module.css";
 import { useSnackbar } from "../Snackbar";
 import CustomButton from "../CustomButton";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import LanguageSelector from "../LanguageSelector";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Drawer, Box, Button, Grid, IconButton } from "@mui/material";
 
 const DrawerComp = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const snackBarMessage = useSnackbar();
+  const isAuthenticated = !!Cookies.get("token");
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -38,11 +39,6 @@ const DrawerComp = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleNavigation = (route) => {
-    setDrawerOpen(false);
-    navigate(route);
   };
 
   return (
@@ -86,46 +82,54 @@ const DrawerComp = () => {
               flexDirection: "column",
             }}
           >
-            <Button
-              className={styles.button}
-              onClick={() => handleNavigation("/addProduct")}
-            >
-              {t("ADD_PRODUCT")}
-            </Button>
-            <Button
-              className={styles.button}
-              onClick={() => handleNavigation("/home")}
-            >
-              {t("PRODUCT")}
-            </Button>
-            <Button
-              className={styles.button}
-              onClick={() => handleNavigation("/addToCart")}
-            >
-              {t("CART")}
-            </Button>
-            <Button
-              className={styles.button}
-              onClick={() => handleNavigation("/address")}
-            >
-              {t("ADDRESS")}
-            </Button>
-            <Button>
-              <LanguageSelector />
-            </Button>
-            <Button>
-              {" "}
-              <ThemeToggle />
-            </Button>
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <CustomButton
-              loading={loading}
-              title={t("LOGOUT")}
-              onClick={() => {
-                setModalOpen(true);
-              }}
-            />
+            {!isAuthenticated ? (
+              <>
+                <Button>
+                  <LanguageSelector />
+                </Button>
+                <Button>
+                  <ThemeToggle />
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button className={styles.button}>
+                  <NavLink to="/addProduct" className={styles.button}>
+                    {t("ADD_PRODUCT")}
+                  </NavLink>
+                </Button>
+                <Button className={styles.button}>
+                  <NavLink to="/home" className={styles.button}>
+                    {t("PRODUCT")}
+                  </NavLink>
+                </Button>
+                <Button className={styles.button}>
+                  <NavLink to="/addToCart" className={styles.button}>
+                    {t("CART")}
+                  </NavLink>
+                </Button>
+                <Button className={styles.button}>
+                  <NavLink to="/address" className={styles.button}>
+                    {t("ADDRESS")}
+                  </NavLink>
+                </Button>
+                <Button>
+                  <LanguageSelector />
+                </Button>
+                <Button>
+                  <ThemeToggle />
+                </Button>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  <CustomButton
+                    loading={loading}
+                    title={t("LOGOUT")}
+                    onClick={() => {
+                      setModalOpen(true);
+                    }}
+                  />
+                </Box>
+              </>
+            )}
           </Box>
         </Box>
         <DeleteModal

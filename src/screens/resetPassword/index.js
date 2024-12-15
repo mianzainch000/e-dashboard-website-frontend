@@ -1,5 +1,4 @@
 import * as Yup from "yup";
-import Cookies from "js-cookie";
 import { useFormik } from "formik";
 import YupPassword from "yup-password";
 import React, { useState } from "react";
@@ -105,9 +104,9 @@ const ResetPassword = () => {
         <Box
           sx={{
             height: {
-              lg: "100vh",
-              md: "100vh",
-              sm: "100vh",
+              lg: "85vh",
+              md: "80vh",
+              sm: "80vh",
               xs: "100vh",
             },
           }}
@@ -146,7 +145,7 @@ const ResetPassword = () => {
                   fontSize={"20px"}
                   fontWeight={"bolder"}
                 >
-                  {t("LOGIN_FORM")}
+                  {t("RESET_PASSWORD")}
                 </Typography>
               </Grid>
 
@@ -233,15 +232,15 @@ const ResetPassword = () => {
 
               <Grid item xs={12} className={styles.centeredContainer}>
                 <CustomButton
-                  title={t("LOGIN")}
+                  title={t("RESET_PASSWORD")}
                   loading={loading}
                   type="submit"
                 />
               </Grid>
               <Grid item>
-                <NavLink to="/signup" variant="body2">
-                  <Typography className={styles.alreadyAccount}>
-                    {t("CREAT_Account")}
+                <NavLink to="/" variant="body2">
+                  <Typography className={styles.goBackToLogin}>
+                    {t("GO_BACK_TO_LOGIN")}
                   </Typography>
                 </NavLink>
               </Grid>

@@ -79,18 +79,8 @@ const Navbar = () => {
               <DrawerComp />
             ) : (
               <Stack direction="row" spacing={2}>
-                {!isAuthenticated && (
+                {!isAuthenticated ? (
                   <>
-                    <Button className={styles.button}>
-                      <NavLink to="/" className={styles.button}>
-                        {t("LOGIN")}
-                      </NavLink>
-                    </Button>
-                    <Button className={styles.button}>
-                      <NavLink to="/signup" className={styles.button}>
-                        {t("SIGNUP")}
-                      </NavLink>
-                    </Button>
                     <Button>
                       <LanguageSelector />
                     </Button>
@@ -98,8 +88,7 @@ const Navbar = () => {
                       <ThemeToggle />
                     </Button>
                   </>
-                )}
-                {isAuthenticated && (
+                ) : (
                   <>
                     <Button className={styles.button}>
                       <NavLink to="/addProduct" className={styles.button}>

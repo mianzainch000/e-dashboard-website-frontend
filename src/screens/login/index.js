@@ -110,9 +110,9 @@ const Login = () => {
         <Box
           sx={{
             height: {
-              lg: "100vh",
-              md: "100vh",
-              sm: "100vh",
+              lg: "85vh",
+              md: "80vh",
+              sm: "80vh",
               xs: "100vh",
             },
           }}
