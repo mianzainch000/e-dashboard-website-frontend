@@ -78,5 +78,7 @@
   "STOCK_NOT_AVAILABLE": "Lagerbestand nicht verfügbar",
   "ADDRESS_ADDED_SUCCESSFULLY": "Adresse erfolgreich hinzugefügt",
   "AT_LEAST_ONE_IMAGE_REQUIRED": "Mindestens ein Bild erforderlich",
-  "STOCK_REQUIRED": "Lagerbestand erforderlich"
+  "STOCK_REQUIRED": "Lagerbestand erforderlich",
+  "FORGOT_PASSWORD": "Passwort vergessen",
+  "VERIFY": "Überprüfen"
 }

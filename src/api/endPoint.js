@@ -8,6 +8,10 @@ export const login = async (data) => {
   return await api.post("login", data);
 };
 
+export const forgotPassword = async (data) => {
+  return await api.post("forgotPassword", data);
+};
+
 export const postProduct = async (data) => {
   return await api.post("postProduct", data);
 };

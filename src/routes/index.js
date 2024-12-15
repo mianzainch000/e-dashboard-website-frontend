@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "../screens/login";
 import Signup from "../screens/signup";
+import ForgotPassword from "../screens/forgotPassword";
 import Layout from "../components/Layout";
 import Product from "../screens/product";
 import CartPage from "../screens/addToCart";
@@ -21,6 +22,7 @@ export const Router = () => {
             <Route element={<Layout />}>
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/forgotPassword" element={<ForgotPassword />} />
             </Route>
           </Route>
 

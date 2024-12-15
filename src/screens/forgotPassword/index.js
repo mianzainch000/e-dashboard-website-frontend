@@ -1,21 +1,19 @@
 import * as Yup from "yup";
-import Cookies from "js-cookie";
 import { useFormik } from "formik";
 import YupPassword from "yup-password";
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import logo from "../../Images/logo.png";
-import { login } from "../../api/endPoint";
+import { forgotPassword } from "../../api/endPoint";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import TextInput from "../../components/TextInput";
 import { useSnackbar } from "../../components/Snackbar";
-import { NavLink, useNavigate } from "react-router-dom";
 import CustomButton from "../../components/CustomButton";
-import LockRoundedIcon from "@mui/icons-material/LockRounded";
+
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import { useValidationSchemas } from "../../components/Validation";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+// import { useValidationSchemas } from "../../components/Validation";
+
 import {
   useMediaQuery,
   useTheme,
@@ -26,55 +24,47 @@ import {
 } from "@mui/material";
 
 YupPassword(Yup);
-const Login = () => {
+const ForgotPassword = () => {
   const theme = useTheme();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const snackBarMessage = useSnackbar();
   const [loading, setLoading] = useState(false);
-  const { loginFormValidation } = useValidationSchemas(t);
-  const [showPassword, setShowPassword] = useState(false);
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  // const { loginFormValidation } = useValidationSchemas(t);
 
-  const handleTogglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     onSubmit: (values) => {
       setLoading(true);
       postData(values);
     },
-    validationSchema: loginFormValidation,
+    // validationSchema: loginFormValidation,
   });
 
   const postData = async (values) => {
     try {
       const data = {
         email: values.email,
-        password: values.password,
       };
-      const res = await login(data);
+      const res = await forgotPassword(data);
       if (res?.status === 201) {
-        Cookies.set("token", res?.data?.token, { expires: 2 });
-
         snackBarMessage({
           type: "success",
-          // message: res?.data?.message,
-          message: t("LOGIN_SUCCESSFULLY"),
+          message: res?.data?.message,
+          // message: t("LOGIN_SUCCESSFULLY"),
         });
         formik.handleReset();
 
-        navigate("/home");
+        navigate("/resetPassword");
       } else {
         snackBarMessage({
           type: "error",
-          // message: res?.data?.message,
-          message: t("INVALID_EMAIL_OR_PASSWORD"),
+          message: res?.data?.message,
+          // message: t("INVALID_EMAIL_OR_PASSWORD"),
         });
       }
     } catch (error) {
@@ -144,6 +134,7 @@ const Login = () => {
               spacing={2}
               sx={{ marginTop: "10px", overflowY: "auto" }}
               xs={12}
+              className={styles.a}
             >
               <Grid item xs={12} className={styles.centeredContainer}>
                 <Typography
@@ -151,7 +142,7 @@ const Login = () => {
                   fontSize={"20px"}
                   fontWeight={"bolder"}
                 >
-                  {t("LOGIN_FORM")}
+                  {t("FORGOT_PASSWORD")}
                 </Typography>
               </Grid>
 
@@ -175,64 +166,13 @@ const Login = () => {
                   </Typography>
                 ) : null}
               </Grid>
-              <Grid item xs={12} className={styles.centeredContainer}>
-                <TextInput
-                  name="password"
-                  label={t("PASSWORD")}
-                  type={showPassword ? "text" : "password"}
-                  icon={
-                    <IconButton edge="start">
-                      <LockRoundedIcon sx={{ color: "var(--text-dark)" }} />
-                    </IconButton>
-                  }
-                  endIcon={
-                    <IconButton
-                      onClick={handleTogglePasswordVisibility}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <VisibilityOutlinedIcon
-                          sx={{ color: "var(--text-dark)" }}
-                        />
-                      ) : (
-                        <VisibilityOffOutlinedIcon
-                          sx={{ color: "var(--text-dark)" }}
-                        />
-                      )}
-                    </IconButton>
-                  }
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={
-                    formik.touched.password && Boolean(formik.errors.password)
-                  }
-                />
-                {formik.touched.password && formik.errors.password ? (
-                  <Typography className={styles.error}>
-                    {formik.errors.password}
-                  </Typography>
-                ) : null}
-              </Grid>
-              <Grid item xs={12} className={styles.forgotPassword}>
-                <NavLink to="/forgotPassword" variant="body2">
-                  <Typography>{t("FORGOT_PASSWORD")}</Typography>
-                </NavLink>
-              </Grid>
 
               <Grid item xs={12} className={styles.centeredContainer}>
                 <CustomButton
-                  title={t("LOGIN")}
+                  title={t("VERIFY")}
                   loading={loading}
                   type="submit"
                 />
-              </Grid>
-              <Grid item>
-                <NavLink to="/signup" variant="body2">
-                  <Typography className={styles.alreadyAccount}>
-                    {t("CREAT_Account")}
-                  </Typography>
-                </NavLink>
               </Grid>
             </Grid>
           </Box>
@@ -242,4 +182,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

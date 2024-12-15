@@ -78,5 +78,7 @@
   "STOCK_NOT_AVAILABLE": "Stock not available",
   "ADDRESS_ADDED_SUCCESSFULLY": "Address added successfully",
   "AT_LEAST_ONE_IMAGE_REQUIRED": "At least one image required",
-  "STOCK_REQUIRED": "Stock required"
+  "STOCK_REQUIRED": "Stock required",
+  "FORGOT_PASSWORD":"Forgot Password",
+  "VERIFY":"Verify"
 }
