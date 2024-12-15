@@ -29,6 +29,28 @@ export const signupFormValidation = (t) => {
   });
 };
 
+export const forgotFormValidation = (t) => {
+  return Yup.object({
+    email: Yup.string()
+      .required(t("EMAIL_REQUIRED"))
+      .matches(/\S+@\S+\.\S+/, t("INVALID_EMAIL")),
+  });
+};
+
+export const resetFormValidation = (t) => {
+  return Yup.object({
+    password: Yup.string()
+      .required(t("PASSWORD_REQUIRED"))
+      .min(8, t("PASSWORD_MIN_LENGTH"))
+      .matches(/[a-z]/, t("PASSWORD_LOWERCASE"))
+      .matches(/[A-Z]/, t("PASSWORD_UPPERCASE"))
+      .matches(/[!@#$%^&*(),.?":{}|<>]/, t("PASSWORD_SYMBOL")),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], t("CONFIRM_PASSWORD_MATCH"))
+      .required(t("CONFIRM_PASSWORD_REQUIRED")),
+  });
+};
+
 export const productFormValidation = (t) => {
   return Yup.object({
     name: Yup.string().required(t("NAME_REQUIRED")),
@@ -67,6 +89,8 @@ export const useValidationSchemas = () => {
   return {
     loginFormValidation: loginFormValidation(t),
     signupFormValidation: signupFormValidation(t),
+    forgotFormValidation: forgotFormValidation(t),
+    resetFormValidation: resetFormValidation(t),
     productFormValidation: productFormValidation(t),
     userAddressValidation: userAddressValidation(t),
   };

@@ -12,6 +12,10 @@ export const forgotPassword = async (data) => {
   return await api.post("forgotPassword", data);
 };
 
+export const resetPassword = async (data) => {
+  return await api.post("forgotPassword", data);
+};
+
 export const postProduct = async (data) => {
   return await api.post("postProduct", data);
 };

@@ -1,12 +1,13 @@
 import React from "react";
 import Login from "../screens/login";
 import Signup from "../screens/signup";
-import ForgotPassword from "../screens/forgotPassword";
 import Layout from "../components/Layout";
 import Product from "../screens/product";
 import CartPage from "../screens/addToCart";
 import ProductForm from "../screens/addProduct";
 import AddressPage from "../screens/userAddress";
+import ResetPassword from "../screens/resetPassword";
+import ForgotPassword from "../screens/forgotPassword";
 import ProductDetailCard from "../screens/detailProduct";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PublicRoute from "../components/ProtectedRoutes/PublicRoute";
@@ -23,6 +24,7 @@ export const Router = () => {
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/forgotPassword" element={<ForgotPassword />} />
+              <Route path="/resetPassword" element={<ResetPassword />} />
             </Route>
           </Route>
 
