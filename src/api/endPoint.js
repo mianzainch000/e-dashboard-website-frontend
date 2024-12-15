@@ -12,8 +12,8 @@ export const forgotPassword = async (data) => {
   return await api.post("forgotPassword", data);
 };
 
-export const resetPassword = async (data) => {
-  return await api.post("forgotPassword", data);
+export const resetPassword = async (data, token) => {
+  return await api.post(`resetPassword/${token}`, data);
 };
 
 export const postProduct = async (data) => {

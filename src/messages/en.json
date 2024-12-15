@@ -82,5 +82,6 @@
   "FORGOT_PASSWORD": "Forgot Password",
   "VERIFY": "Verify",
   "RESET_PASSWORD": "Reset Password",
-  "GO_BACK_TO_LOGIN": "Go back to login"
+  "GO_BACK_TO_LOGIN": "Go back to login",
+  "INVALID_OR_MISSING_TOKEN":"Invalid or missing token"
 }

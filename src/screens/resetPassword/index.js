@@ -4,12 +4,12 @@ import YupPassword from "yup-password";
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import logo from "../../Images/logo.png";
-import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { resetPassword } from "../../api/endPoint";
 import TextInput from "../../components/TextInput";
 import { useSnackbar } from "../../components/Snackbar";
 import CustomButton from "../../components/CustomButton";
+import { NavLink, useSearchParams } from "react-router-dom";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import { useValidationSchemas } from "../../components/Validation";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -28,17 +28,22 @@ const ResetPassword = () => {
   const theme = useTheme();
   const { t } = useTranslation();
   const snackBarMessage = useSnackbar();
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("token") || "";
   const [loading, setLoading] = useState(false);
   const { resetFormValidation } = useValidationSchemas(t);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+
   const handleToggleConfirmPasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+    setShowConfirmPassword((prevShowPassword) => !prevShowPassword);
   };
+
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -46,29 +51,37 @@ const ResetPassword = () => {
     },
     onSubmit: (values) => {
       setLoading(true);
-      postData(values);
+      postData(values, token);
     },
     validationSchema: resetFormValidation,
   });
 
-  const postData = async (values) => {
+  const postData = async (values, token) => {
+    setLoading(true);
     try {
+      if (!token) {
+        snackBarMessage({
+          type: "error",
+          message: t("INVALID_OR_MISSING_TOKEN"),
+        });
+        return;
+      }
+
       const data = {
         newPassword: values.password,
       };
-      const res = await resetPassword(data);
+
+      const res = await resetPassword(data, token);
       if (res?.status === 201) {
         snackBarMessage({
           type: "success",
           message: res?.data?.message,
-          // message: t("LOGIN_SUCCESSFULLY"),
         });
         formik.handleReset();
       } else {
         snackBarMessage({
           type: "error",
           message: res?.data?.message,
-          // message: t("INVALID_EMAIL_OR_PASSWORD"),
         });
       }
     } catch (error) {
@@ -192,7 +205,7 @@ const ResetPassword = () => {
                 <TextInput
                   name="confirmPassword"
                   label={t("CONFIRM_PASSWORD")}
-                  type={showPassword ? "text" : "password"}
+                  type={showConfirmPassword ? "text" : "password"}
                   icon={
                     <IconButton edge="start">
                       <LockRoundedIcon sx={{ color: "var(--text-dark)" }} />
@@ -203,7 +216,7 @@ const ResetPassword = () => {
                       onClick={handleToggleConfirmPasswordVisibility}
                       edge="end"
                     >
-                      {showPassword ? (
+                      {showConfirmPassword ? (
                         <VisibilityOutlinedIcon
                           sx={{ color: "var(--text-dark)" }}
                         />

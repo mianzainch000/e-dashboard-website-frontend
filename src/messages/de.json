@@ -82,5 +82,6 @@
   "FORGOT_PASSWORD": "Passwort vergessen",
   "VERIFY": "Überprüfen",
   "RESET_PASSWORD": "Passwort zurücksetzen",
-  "GO_BACK_TO_LOGIN": "Zurück zum Login"
+  "GO_BACK_TO_LOGIN": "Zurück zum Login",
+  "INVALID_OR_MISSING_TOKEN": "Ungültiges oder fehlendes Token"
 }
