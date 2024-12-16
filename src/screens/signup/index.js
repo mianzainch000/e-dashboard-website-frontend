@@ -312,8 +312,8 @@ const Signup = () => {
               </Grid>
               <Grid item>
                 <NavLink to="/" variant="body2">
-                  <Typography className={styles.goBackToLogin}>
-                    {t("GO_BACK_TO_LOGIN")}
+                  <Typography className={styles.alreadyAccount}>
+                    {t("ALREADY_ACOOUNT")}
                   </Typography>
                 </NavLink>
               </Grid>

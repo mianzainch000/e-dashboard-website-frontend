@@ -6,7 +6,6 @@ import styles from "./styles.module.css";
 import logo from "../../Images/logo.png";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import TextInput from "../../components/TextInput";
 import { forgotPassword } from "../../api/endPoint";
 import { useSnackbar } from "../../components/Snackbar";
@@ -26,7 +25,6 @@ YupPassword(Yup);
 const ForgotPassword = () => {
   const theme = useTheme();
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const snackBarMessage = useSnackbar();
   const [loading, setLoading] = useState(false);
   const { forgotFormValidation } = useValidationSchemas(t);
@@ -56,8 +54,6 @@ const ForgotPassword = () => {
           // message: t("LOGIN_SUCCESSFULLY"),
         });
         formik.handleReset();
-
-        navigate("/resetPassword");
       } else {
         snackBarMessage({
           type: "error",
