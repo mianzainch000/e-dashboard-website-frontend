@@ -22,6 +22,7 @@ export const signupFormValidation = (t) => {
       .min(8, t("PASSWORD_MIN_LENGTH"))
       .matches(/[a-z]/, t("PASSWORD_LOWERCASE"))
       .matches(/[A-Z]/, t("PASSWORD_UPPERCASE"))
+      .matches(/[0-9]/, t("PASSWORD_NUMBER"))
       .matches(/[!@#$%^&*(),.?":{}|<>]/, t("PASSWORD_SYMBOL")),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], t("CONFIRM_PASSWORD_MATCH"))
@@ -44,6 +45,7 @@ export const resetFormValidation = (t) => {
       .min(8, t("PASSWORD_MIN_LENGTH"))
       .matches(/[a-z]/, t("PASSWORD_LOWERCASE"))
       .matches(/[A-Z]/, t("PASSWORD_UPPERCASE"))
+      .matches(/[0-9]/, t("PASSWORD_NUMBER"))
       .matches(/[!@#$%^&*(),.?":{}|<>]/, t("PASSWORD_SYMBOL")),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], t("CONFIRM_PASSWORD_MATCH"))

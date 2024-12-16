@@ -19,6 +19,7 @@
   "PASSWORD_LOWERCASE": "Password must contain at least one lowercase letter",
   "PASSWORD_UPPERCASE": "Password must contain at least one uppercase letter",
   "PASSWORD_SYMBOL": "Password must contain at least one symbol",
+  "PASSWORD_NUMBER": "Password must contain at least one number",
   "CONFIRM_PASSWORD_MATCH": "Passwords must match",
   "CONFIRM_PASSWORD_REQUIRED": "Confirm Password is required",
   "NAME": "Name",
@@ -83,5 +84,5 @@
   "VERIFY": "Verify",
   "RESET_PASSWORD": "Reset Password",
   "GO_BACK_TO_LOGIN": "Go back to login",
-  "INVALID_OR_MISSING_TOKEN":"Invalid or missing token"
+  "INVALID_OR_MISSING_TOKEN": "Invalid or missing token"
 }

@@ -19,6 +19,7 @@
   "PASSWORD_LOWERCASE": "Das Passwort muss mindestens einen Kleinbuchstaben enthalten",
   "PASSWORD_UPPERCASE": "Das Passwort muss mindestens einen Großbuchstaben enthalten",
   "PASSWORD_SYMBOL": "Das Passwort muss mindestens ein Symbol enthalten",
+  "PASSWORD_NUMBER": "Das Passwort muss mindestens eine Zahl enthalten",
   "CONFIRM_PASSWORD_MATCH": "Die Passwörter müssen übereinstimmen",
   "CONFIRM_PASSWORD_REQUIRED": "Passwort bestätigen ist erforderlich",
   "NAME": "Name",
