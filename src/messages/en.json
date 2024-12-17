@@ -84,5 +84,6 @@
   "VERIFY": "Verify",
   "RESET_PASSWORD": "Reset Password",
   "GO_BACK_TO_LOGIN": "Go back to login",
-  "INVALID_OR_MISSING_TOKEN": "Invalid or missing token"
+  "INVALID_OR_MISSING_TOKEN": "Invalid or missing token",
+  "AT_LEAST_ONE_PRODUCT_MUST_BE_ADDED": "At least one product must be added"
 }

@@ -84,5 +84,6 @@
   "VERIFY": "Überprüfen",
   "RESET_PASSWORD": "Passwort zurücksetzen",
   "GO_BACK_TO_LOGIN": "Zurück zum Login",
-  "INVALID_OR_MISSING_TOKEN": "Ungültiges oder fehlendes Token"
+  "INVALID_OR_MISSING_TOKEN": "Ungültiges oder fehlendes Token",
+  "AT_LEAST_ONE_PRODUCT_MUST_BE_ADDED": "Mindestens ein Produkt muss hinzugefügt werden"
 }
