@@ -1,11 +1,11 @@
-import config from "../../api/config";
-import logo from "../../Images/logo.png";
-import { addToCart } from "../../redux/slice";
+import config from "../../../api/config";
+import logo from "../../../Images/logo.png";
+import { addToCart } from "../../../redux/slice";
 import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
-import { getProductById } from "../../api/endPoint";
+import { getProductById } from "../../../api/endPoint";
 import { useDispatch, useSelector } from "react-redux";
-import { useSnackbar } from "../../components/Snackbar";
+import { useSnackbar } from "../../../components/Snackbar";
 import { useParams, useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import {
@@ -250,7 +250,7 @@ const ProductDetailCard = () => {
                 textTransform: "none",
                 width: { xs: "100%", sm: "30%" },
               }}
-              onClick={() => navigate(`/addProduct/${id}`)}
+              onClick={() => navigate(`/home/addProduct/${id}`)}
             >
               {t("EDIT")}
             </Button>

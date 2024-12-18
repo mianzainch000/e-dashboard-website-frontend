@@ -1,16 +1,20 @@
 import { useFormik } from "formik";
-import config from "../../api/config";
+import config from "../../../api/config";
 import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
-import TextInput from "../../components/TextInput";
-import { useSnackbar } from "../../components/Snackbar";
-import CustomButton from "../../components/CustomButton";
+import TextInput from "../../../components/TextInput";
 import { useNavigate, useParams } from "react-router-dom";
-import UploadImageSection from "../../components/UploadImage";
-import { useValidationSchemas } from "../../components/Validation";
+import { useSnackbar } from "../../../components/Snackbar";
+import CustomButton from "../../../components/CustomButton";
+import UploadImageSection from "../../../components/UploadImage";
 import { Box, Button, Container, Typography } from "@mui/material";
-import { getProductById, postProduct, updateProduct } from "../../api/endPoint";
+import { useValidationSchemas } from "../../../components/Validation";
+import {
+  getProductById,
+  postProduct,
+  updateProduct,
+} from "../../../api/endPoint";
 
 const ProductForm = () => {
   const { id } = useParams();
@@ -103,7 +107,7 @@ const ProductForm = () => {
         //   message: t("PRODUCT_UPDATED_SUCCESSFULLY"),
         // });
         formik.resetForm({ values: { ...formik.initialValues, images: [] } });
-        navigate("/addProduct");
+        navigate("/home/addProduct");
       }
     } catch (error) {
       snackBarMessage({ type: "error", message: error.message });

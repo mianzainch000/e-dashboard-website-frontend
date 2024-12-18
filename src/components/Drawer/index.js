@@ -94,22 +94,22 @@ const DrawerComp = () => {
             ) : (
               <>
                 <Button className={styles.button}>
-                  <NavLink to="/addProduct" className={styles.button}>
+                  <NavLink to="home/addProduct" className={styles.button}>
                     {t("ADD_PRODUCT")}
                   </NavLink>
                 </Button>
                 <Button className={styles.button}>
-                  <NavLink to="/home" className={styles.button}>
+                  <NavLink to="home/products" className={styles.button}>
                     {t("PRODUCT")}
                   </NavLink>
                 </Button>
                 <Button className={styles.button}>
-                  <NavLink to="/addToCart" className={styles.button}>
+                  <NavLink to="home/addToCart" className={styles.button}>
                     {t("CART")}
                   </NavLink>
                 </Button>
                 <Button className={styles.button}>
-                  <NavLink to="/address" className={styles.button}>
+                  <NavLink to="address/userAddress" className={styles.button}>
                     {t("ADDRESS")}
                   </NavLink>
                 </Button>

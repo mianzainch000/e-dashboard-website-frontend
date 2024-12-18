@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../../Images/logo.png";
 import { NavLink } from "react-router-dom";
+import logo from "../../../Images/logo.png";
 import { useTranslation } from "react-i18next";
-import { removeFromCart } from "../../redux/slice";
+import { removeFromCart } from "../../../redux/slice";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Card,
@@ -129,7 +129,7 @@ const CartPage = () => {
           <Typography variant="h6" sx={{ marginBottom: 2 }}>
             {t("TOTAL_CART_PRICE")}: {totalCartPrice} Rs
           </Typography>
-          <NavLink to="/home">
+          <NavLink to="/home/products">
             <Button
               color="success"
               variant="contained"
@@ -140,7 +140,7 @@ const CartPage = () => {
           </NavLink>
           <br />
           <br />
-          <NavLink to="/address">
+          <NavLink to="/address/userAddress">
             <Button
               color="success"
               variant="contained"

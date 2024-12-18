@@ -4,16 +4,16 @@ import { useFormik } from "formik";
 import YupPassword from "yup-password";
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import logo from "../../Images/logo.png";
-import { login } from "../../api/endPoint";
+import logo from "../../../Images/logo.png";
+import { login } from "../../../api/endPoint";
 import { useTranslation } from "react-i18next";
-import TextInput from "../../components/TextInput";
-import { useSnackbar } from "../../components/Snackbar";
+import TextInput from "../../../components/TextInput";
+import { useSnackbar } from "../../../components/Snackbar";
 import { NavLink, useNavigate } from "react-router-dom";
-import CustomButton from "../../components/CustomButton";
+import CustomButton from "../../../components/CustomButton";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import { useValidationSchemas } from "../../components/Validation";
+import { useValidationSchemas } from "../../../components/Validation";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import {
@@ -69,7 +69,7 @@ const Login = () => {
         });
         formik.handleReset();
 
-        navigate("/home");
+        navigate("home/products");
       } else {
         snackBarMessage({
           type: "error",
@@ -215,7 +215,7 @@ const Login = () => {
                 ) : null}
               </Grid>
               <Grid item xs={12} className={styles.forgotPassword}>
-                <NavLink to="/forgotPassword" variant="body2">
+                <NavLink to="auth/forgotPassword" variant="body2">
                   <Typography>{t("FORGOT_PASSWORD")}</Typography>
                 </NavLink>
               </Grid>
@@ -228,7 +228,7 @@ const Login = () => {
                 />
               </Grid>
               <Grid item>
-                <NavLink to="/signup" variant="body2">
+                <NavLink to="auth/signup" variant="body2">
                   <Typography className={styles.alreadyAccount}>
                     {t("CREAT_Account")}
                   </Typography>

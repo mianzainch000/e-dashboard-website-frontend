@@ -3,15 +3,15 @@ import { useFormik } from "formik";
 import YupPassword from "yup-password";
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import logo from "../../Images/logo.png";
 import { NavLink } from "react-router-dom";
+import logo from "../../../Images/logo.png";
 import { useTranslation } from "react-i18next";
-import TextInput from "../../components/TextInput";
-import { forgotPassword } from "../../api/endPoint";
-import { useSnackbar } from "../../components/Snackbar";
-import CustomButton from "../../components/CustomButton";
+import TextInput from "../../../components/TextInput";
+import { forgotPassword } from "../../../api/endPoint";
+import { useSnackbar } from "../../../components/Snackbar";
+import CustomButton from "../../../components/CustomButton";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import { useValidationSchemas } from "../../components/Validation";
+import { useValidationSchemas } from "../../../components/Validation";
 import {
   useMediaQuery,
   useTheme,

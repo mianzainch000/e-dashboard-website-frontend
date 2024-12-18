@@ -1,10 +1,11 @@
-import config from "../../api/config";
+import config from "../../../api/config";
 import { NavLink } from "react-router-dom";
+import logo from "../../../Images/logo.png";
 import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
-import DeleteModal from "../../components/DeleteModal";
-import { useSnackbar } from "../../components/Snackbar";
-import { getProducts, deleteProduct } from "../../api/endPoint";
+import DeleteModal from "../../../components/DeleteModal";
+import { useSnackbar } from "../../../components/Snackbar";
+import { getProducts, deleteProduct } from "../../../api/endPoint";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import {
   Box,
@@ -15,7 +16,6 @@ import {
   CardMedia,
   CircularProgress,
 } from "@mui/material";
-import logo from "../../Images/logo.png"; // Import the fallback image
 
 const Home = () => {
   const { t } = useTranslation();
@@ -162,7 +162,7 @@ const Home = () => {
                             >
                               <NavLink
                                 to={{
-                                  pathname: `/detail/${product._id}`,
+                                  pathname: `/home/detail/${product._id}`,
                                 }}
                               >
                                 <Button
